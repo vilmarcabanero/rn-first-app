@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react'
+import * as RN from 'react-native'
+import styled from 'styled-components'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const App = () => {
+	const [outputText, setOutputText] = useState('Hello G! I like you!')
+
+	return (
+		<RN.View style={styles.container}>
+			<Text>{outputText}</Text>
+			<RN.Button
+				title='Can I ask you something?'
+				onPress={() => setOutputText('Will you be my girlfriend?')}
+			/>
+		</RN.View>
+	)
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = RN.StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: '#fff',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+})
+
+const Text = styled(RN.Text)`
+	color: steelblue;
+	font-size: 16px;
+	margin-bottom: 5px;
+`
+
+export default App
